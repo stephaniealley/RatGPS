@@ -6,7 +6,7 @@ RUN cd $HOME/work;\
     source activate ipykernel_py2; \
     pip install matplotlib; \
     source deactivate; \ 
-    chmod -R 777 $HOME/work/RatGPS
+    chmod -R 777 $HOME/work/RatGPS; \
     source activate ipykernel_py2;
 
 WORKDIR $HOME/work/RatGPS
