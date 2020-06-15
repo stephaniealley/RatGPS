@@ -55,6 +55,7 @@ RUN cd $HOME/work;\
                 nbconvert \
                 yes; \
     yes | conda create -n py27 python=2.7; \
+    conda init bash
     conda activate py27; \
     ipython kernel install --user; \
     conda deactivate; \
