@@ -19,11 +19,6 @@ RUN cd ~;\
     cd $HOME/work;\
     git clone --single-branch -b master https://github.com/mathieuboudreau/RatGPS.git; \
     cd RatGPS;\
-
-    pip install matplotlib; \
-    source activate ipykernel_py2; \
-    pip install matplotlib; \
-    source deactivate; \
     chmod -R 777 $HOME/work/RatGPS
     
 WORKDIR $HOME/work/RatGPS
