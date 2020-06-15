@@ -5,7 +5,7 @@ RUN cd ~;\
     bash ~/miniconda.sh -b -p $HOME/miniconda;\
     echo ". ~/miniconda/etc/profile.d/conda.sh" >> ~/.bashrc;\
     source ~/.bashrc;\
-    pip install yes;
+    pip install yes; \
     yes | conda create -n py27 python=2.7;\
     source activate py27;\
     conda install notebook ipykernel matplotlib numpy;\
