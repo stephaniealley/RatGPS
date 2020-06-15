@@ -8,7 +8,7 @@ RUN cd ~;\
     pip install yes;
     yes | conda create -n py27 python=2.7;\
     source activate py27;\
-    conda install notebook ipykerne matplotlib numpyl;\
+    conda install notebook ipykernel matplotlib numpy;\
     ipython kernel install --user;\
     source deactivate;\
     yes |conda create -n py36 python=3.6;\
