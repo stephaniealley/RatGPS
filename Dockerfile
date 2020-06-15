@@ -56,7 +56,6 @@ RUN cd $HOME/work;\
                 yes; \
     yes | conda create -n py27 python=2.7; \
     source activate py27; \
-    pip install notebook ipykernel; \
     ipython kernel install --user; \
     source deactivate; \
     python -m sos_notebook.install;\
