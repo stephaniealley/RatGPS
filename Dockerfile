@@ -12,6 +12,3 @@ RUN cd $HOME/work;\
 WORKDIR $HOME/work/RatGPS
 
 USER $NB_UID
-
-# Specify the default command to run
-ENTRYPOINT ["source", "activate", "ipykernel_py2"]
