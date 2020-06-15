@@ -5,16 +5,17 @@ RUN cd ~;\
     bash ~/miniconda.sh -b -p $HOME/miniconda;\
     echo ". ~/miniconda/etc/profile.d/conda.sh" >> ~/.bashrc;\
     source ~/.bashrc;\
-    conda create -n py27 python=2.7;\
-    source activate py27;\
-    conda install notebook ipykerne matplotlib numpyl;\
-    ipython kernel install --user;\
-    source deactivate;\
-    conda create -n py36 python=3.6;\
-    source activate py36;\
-    conda install notebook ipykernel;\
-    ipython kernel install --user;\
-    source deactivate;\
+    pip install yes;
+    yes | conda create -n py27 python=2.7;\
+    yes |source activate py27;\
+    yes |conda install notebook ipykerne matplotlib numpyl;\
+    yes |ipython kernel install --user;\
+    yes |source deactivate;\
+    yes |conda create -n py36 python=3.6;\
+    yes |source activate py36;\
+    yes |conda install notebook ipykernel;\
+    yes |ipython kernel install --user;\
+    yes |source deactivate;\
     cd $HOME/work;\
     git clone --single-branch -b master https://github.com/mathieuboudreau/RatGPS.git; \
     cd RatGPS;\
