@@ -55,10 +55,10 @@ RUN cd $HOME/work;\
                 nbconvert \
                 yes; \
     yes | conda create -n py27 python=2.7; \
-    conda activate py27; \
-    conda install notebook ipykernel; \
+    source activate py27; \
+    pip install notebook ipykernel; \
     ipython kernel install --user; \
-    conda deactivate; \
+    source deactivate; \
     python -m sos_notebook.install;\
     git clone --single-branch -b master https://github.com/mathieuboudreau/RatGPS.git; \
     cd RatGPS;\
