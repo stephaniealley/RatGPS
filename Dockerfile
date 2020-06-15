@@ -1,64 +1,16 @@
-FROM jupyter/datascience-notebook
+FROM mdabioinfo/sos-notebook@sha256:4e085e56d81cef438b6909bf41ec192d5781c20f80b2a7b716a48e2f89f25d82
 
-USER root
+MAINTAINER Bo Peng <bpeng@mdanderson.org>
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        emacs \
-        git \
-        inkscape \
-        jed \
-        libsm6 \
-        libxext-dev \
-        libxrender1 \
-        lmodern \
-        netcat \
-        unzip \
-        nano \
-        curl \
-        wget \
-        cmake \
-        bsdtar  \
-        rsync \
-        gnuplot-x11 \
-        libopenblas-base \
-        python3-dev \
-        ttf-dejavu && \
-    apt-get clean && \
-    apt-get autoremove && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+USER  root
+COPY  . ${HOME}
+RUN   chown -R ${NB_UID} ${HOME}
+USER  ${NB_USER}
 
-RUN julia -e 'import Pkg; Pkg.add("FFTW"); Pkg.add("GZip"); Pkg.add("PyPlot"); Pkg.precompile();'
+# Specify the default command to run
+CMD ["jupyter", "notebook", "--ip", "0.0.0.0"]
 
 RUN cd $HOME/work;\
-    pip install --upgrade pip; \
-    pip install sos\
-                sos-notebook \
-                sos-python \
-                sos-bash \
-                sos-matlab \
-                sos-ruby \
-                sos-sas \
-                sos-julia \
-                sos-javascript\
-                sos-r\
-                scipy \
-                plotly \
-                dash \
-                dash_core_components \
-                dash_html_components \
-                dash_dangerously_set_inner_html \
-                dash-renderer \
-                flask \
-                ipywidgets \
-                nibabel \
-                nbconvert \
-                yes; \
-    yes | conda create -n py27 python=2.7; \
-    source activate py27; \
-    ipython kernel install --user; \
-    source deactivate; \
-    python -m sos_notebook.install;\
     git clone --single-branch -b master https://github.com/mathieuboudreau/RatGPS.git; \
     cd RatGPS;\
     chmod -R 777 $HOME/work/RatGPS
