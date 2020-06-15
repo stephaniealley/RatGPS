@@ -1,3 +1,0 @@
-source activate ipykernel_py2;
-pip install matplotlib;
-source deactivate
