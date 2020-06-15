@@ -7,10 +7,11 @@ RUN cd $HOME/work;\
     pip install matplotlib; \
     source deactivate; \ 
     chmod -R 777 $HOME/work/RatGPS
-    
+    source activate ipykernel_py2;
+
 WORKDIR $HOME/work/RatGPS
 
 USER $NB_UID
 
 # Specify the default command to run
-CMD ["jupyter", "notebook", "--ip", "0.0.0.0"]
+ENTRYPOINT ["source activate ipykernel_py2; pip install matplotlib"]
